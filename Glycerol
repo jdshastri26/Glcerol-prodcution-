@@ -1,0 +1,67 @@
+# Constants
+MOLAR_MASS_TRIGLYCERIDE = 885.0  # g/mol, approximate molar mass of a triglyceride
+MOLAR_MASS_GLYCEROL = 92.09      # g/mol, molar mass of glycerol
+
+def calculate_glycerol(triglyceride_mass):
+    """
+    Calculate the mass of glycerol produced from a given mass of triglycerides.
+
+    Parameters:
+    triglyceride_mass (float): Mass of triglycerides in grams.
+
+    Returns:
+    float: Mass of glycerol produced in grams.
+    """
+    # Moles of triglyceride
+    moles_triglyceride = triglyceride_mass / MOLAR_MASS_TRIGLYCERIDE
+    
+    # Moles of glycerol produced (1:1 molar ratio)
+    moles_glycerol = moles_triglyceride
+    
+    # Mass of glycerol produced
+    mass_glycerol = moles_glycerol * MOLAR_MASS_GLYCEROL
+    
+    return mass_glycerol
+
+def main():
+    print("Glycerol Production Calculator")
+    print("This program calculates the mass of glycerol produced from a given mass of triglycerides.")
+    
+    while True:
+        try:
+            # User input for triglyceride mass
+            triglyceride_mass_input = float(input("Enter the mass of triglycerides in grams: "))
+            
+            if triglyceride_mass_input <= 0:
+                raise ValueError("The mass of triglycerides must be a positive number.")
+            
+            # Calculate glycerol production
+            glycerol_produced = calculate_glycerol(triglyceride_mass_input)
+            
+            # Display result
+            print(f"Mass of glycerol produced from {triglyceride_mass_input:.2f} grams of triglycerides: {glycerol_produced:.2f} grams")
+            break
+        
+        except ValueError as e:
+            print(f"Invalid input: {e}. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
+Explanation:
+
+    Constants: Define the molar masses of triglyceride and glycerol.
+    Function calculate_glycerol:
+        Calculates the moles of triglyceride from the given mass.
+        Uses the 1:1 molar ratio between triglyceride and glycerol to determine the moles of glycerol produced.
+        Converts moles of glycerol to mass using its molar mass.
+    Function main:
+        Provides a user-friendly interface for the glycerol production calculation.
+        Prompts the user to enter the mass of triglycerides.
+        Validates the input to ensure it is a positive number.
+        Calls calculate_glycerol to compute the mass of glycerol produced.
+        Displays the result.
+        Includes a loop to allow the user to re-enter the input if an invalid value is provided.
+    Execution block: Ensures that the script runs the main function when executed directly.
+
+
